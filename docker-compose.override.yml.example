@@ -1,0 +1,37 @@
+# Docker Compose Override for Development
+# Copy this to docker-compose.override.yml for local development
+
+version: '3.9'
+
+services:
+  backend:
+    volumes:
+      - ./backend/app:/app
+    environment:
+      DEBUG: "true"
+      ENVIRONMENT: development
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  frontend:
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      NODE_ENV: development
+    command: npm run dev
+
+  scheduler:
+    volumes:
+      - ./scheduler/app:/app
+    environment:
+      LOG_LEVEL: DEBUG
+    command: python -m app.scheduler --debug
+
+  postgres:
+    ports:
+      - "5432:5432"
+
+  redis:
+    ports:
+      - "6379:6379"

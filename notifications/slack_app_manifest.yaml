@@ -1,0 +1,94 @@
+# Slack App Manifest for BioNewsBot Notifications
+# This manifest can be used to create a new Slack app with all required permissions
+# Visit https://api.slack.com/apps and click "Create New App" -> "From an app manifest"
+
+display_information:
+  name: BioNewsBot
+  description: Life sciences intelligence notifications
+  background_color: "#2C3E50"
+  long_description: BioNewsBot delivers real-time notifications about regulatory approvals, clinical trials, M&A activity, funding rounds, and strategic partnerships in the life sciences industry. Get instant alerts with rich formatting and interactive features.
+
+features:
+  app_home:
+    home_tab_enabled: true
+    messages_tab_enabled: true
+    messages_tab_read_only_enabled: false
+  bot_user:
+    display_name: BioNewsBot
+    always_online: true
+  shortcuts:
+    - name: View Recent Insights
+      type: global
+      callback_id: view_recent_insights
+      description: View the most recent life sciences insights
+
+oauth_config:
+  redirect_urls:
+    - https://your-domain.com/slack/oauth/callback
+  scopes:
+    bot:
+      # Messaging permissions
+      - channels:history
+      - channels:read
+      - channels:write
+      - chat:write
+      - chat:write.public
+      - chat:write.customize
+      
+      # Interactive permissions
+      - im:history
+      - im:read
+      - im:write
+      
+      # Group/private channel permissions
+      - groups:history
+      - groups:read
+      - groups:write
+      
+      # User interaction permissions
+      - users:read
+      - users:read.email
+      
+      # File permissions (for attachments)
+      - files:read
+      - files:write
+      
+      # Reaction permissions
+      - reactions:read
+      - reactions:write
+      
+      # App home permissions
+      - app_mentions:read
+      
+      # Team information
+      - team:read
+
+settings:
+  event_subscriptions:
+    request_url: https://your-domain.com/slack/events
+    bot_events:
+      - app_home_opened
+      - app_mention
+      - message.channels
+      - message.groups
+      - message.im
+      - reaction_added
+      - reaction_removed
+  interactivity:
+    is_enabled: true
+    request_url: https://your-domain.com/webhooks/slack/interactions
+  org_deploy_enabled: false
+  socket_mode_enabled: true
+  token_rotation_enabled: false
+
+slash_commands:
+  - command: /bionews
+    url: https://your-domain.com/slack/commands
+    description: Interact with BioNewsBot
+    usage_hint: "[help|status|subscribe|unsubscribe]"
+    should_escape: false
+  - command: /bionews-search
+    url: https://your-domain.com/slack/commands
+    description: Search for life sciences insights
+    usage_hint: "[company name or keyword]"
+    should_escape: false

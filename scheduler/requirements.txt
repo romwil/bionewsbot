@@ -1,0 +1,56 @@
+# BioNewsBot Scheduler Service Dependencies
+
+# Core scheduling and task processing
+apscheduler==3.10.4
+celery[redis]==5.3.4
+redis==5.0.1
+kombu==5.3.4
+
+# Web framework for health checks
+flask==3.0.0
+flask-cors==4.0.0
+
+# HTTP client
+requests==2.31.0
+urllib3==2.1.0
+
+# Data processing
+pandas==2.1.4
+numpy==1.26.2
+
+# Logging and monitoring
+structlog==23.2.0
+prometheus-client==0.19.0
+python-json-logger==2.0.7
+
+# Configuration management
+python-dotenv==1.0.0
+pyyaml==6.0.1
+pydantic==2.5.2
+pydantic-settings==2.1.0
+
+# Date/time handling
+python-dateutil==2.8.2
+pytz==2023.3.post1
+
+# Utilities
+click==8.1.7
+colorama==0.4.6
+
+# Development and testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+pytest-mock==3.12.0
+faker==20.1.0
+
+# Code quality
+black==23.12.0
+flake8==6.1.0
+mypy==1.7.1
+isort==5.13.2
+
+# Type stubs
+types-requests==2.31.0.10
+types-redis==4.6.0.11
+types-pytz==2023.3.1.1
