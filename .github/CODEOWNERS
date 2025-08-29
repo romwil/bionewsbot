@@ -1,0 +1,40 @@
+# CODEOWNERS for BioNewsBot
+# This file defines who is responsible for code in this repository
+# These owners will be automatically requested for review when someone opens a pull request
+
+# Default owners for everything in the repo
+* @romwil
+
+# Backend (FastAPI) specific owners
+/backend/ @romwil
+/backend/api/ @romwil
+/backend/core/ @romwil
+/backend/services/ @romwil
+/backend/models/ @romwil
+
+# Frontend (Next.js) specific owners
+/frontend/ @romwil
+/frontend/components/ @romwil
+/frontend/pages/ @romwil
+/frontend/styles/ @romwil
+
+# Infrastructure and DevOps
+/docker/ @romwil
+/scripts/ @romwil
+/.github/ @romwil
+docker-compose*.yml @romwil
+Dockerfile* @romwil
+
+# Documentation
+*.md @romwil
+/docs/ @romwil
+
+# Configuration files
+*.json @romwil
+*.yaml @romwil
+*.yml @romwil
+.env* @romwil
+
+# Security-sensitive files
+SECURITY.md @romwil
+.github/dependabot.yml @romwil
