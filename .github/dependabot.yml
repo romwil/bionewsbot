@@ -1,0 +1,113 @@
+# Dependabot configuration for automated dependency updates
+version: 2
+updates:
+  # Enable version updates for Docker
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "04:00"
+    labels:
+      - "dependencies"
+      - "docker"
+    assignees:
+      - "romwil"
+    reviewers:
+      - "romwil"
+
+  # Enable version updates for npm (Frontend)
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "04:00"
+    labels:
+      - "dependencies"
+      - "javascript"
+      - "frontend"
+    assignees:
+      - "romwil"
+    reviewers:
+      - "romwil"
+    allow:
+      - dependency-type: "all"
+    ignore:
+      # Ignore major version updates for critical packages
+      - dependency-name: "next"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major"]
+
+  # Enable version updates for pip (Backend)
+  - package-ecosystem: "pip"
+    directory: "/backend"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "04:00"
+    labels:
+      - "dependencies"
+      - "python"
+      - "backend"
+    assignees:
+      - "romwil"
+    reviewers:
+      - "romwil"
+    allow:
+      - dependency-type: "all"
+    ignore:
+      # Ignore major version updates for critical packages
+      - dependency-name: "fastapi"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "sqlalchemy"
+        update-types: ["version-update:semver-major"]
+
+  # Enable version updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "04:00"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    assignees:
+      - "romwil"
+    reviewers:
+      - "romwil"
+
+  # Enable security updates for all ecosystems
+  - package-ecosystem: "pip"
+    directory: "/backend"
+    schedule:
+      interval: "daily"
+      time: "02:00"
+    open-pull-requests-limit: 10
+    labels:
+      - "security"
+      - "dependencies"
+    assignees:
+      - "romwil"
+    reviewers:
+      - "romwil"
+    pull-request-branch-name:
+      separator: "-"
+
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "daily"
+      time: "02:00"
+    open-pull-requests-limit: 10
+    labels:
+      - "security"
+      - "dependencies"
+    assignees:
+      - "romwil"
+    reviewers:
+      - "romwil"
+    pull-request-branch-name:
+      separator: "-"
